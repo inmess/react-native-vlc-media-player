@@ -19,6 +19,8 @@ export interface VLCPlayerSource {
    * Media source uri to render
    */
   uri: string;
+
+  initOptions?: string[];
 }
 
 /**
@@ -226,6 +228,8 @@ export type VLCPlayerProps = VLCPlayerCallbackProps & {
    * Set the behavior for the video size (fill, contain, cover, none, scale-down)
    */
   resizeMode?: PlayerResizeMode;
+
+  mediaOptions?: string[];
 
   /**
    * React native view stylesheet styles

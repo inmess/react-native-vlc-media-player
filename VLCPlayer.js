@@ -126,6 +126,8 @@ export default class VLCPlayer extends Component {
      } = this.props;*/
     const source = resolveAssetSource(this.props.source) || {};
 
+    const mediaOptions = this.props.mediaOptions || [];
+
     let uri = source.uri || "";
     if (uri && uri.match(/^\//)) {
       uri = `file://${uri}`;
@@ -146,6 +148,8 @@ export default class VLCPlayer extends Component {
     source.initOptions = source.initOptions || [];
     //repeat the input media
     source.initOptions.push("--input-repeat=1000");
+
+    source.mediaOptions = mediaOptions
     const nativeProps = Object.assign({}, this.props);
     Object.assign(nativeProps, {
       style: [styles.base, nativeProps.style],
@@ -184,6 +188,7 @@ VLCPlayer.propTypes = {
   snapshotPath: PropTypes.string,
   paused: PropTypes.bool,
 
+  mediaOptions: PropTypes.array,
   autoAspectRatio: PropTypes.bool,
   videoAspectRatio: PropTypes.string,
   volume: PropTypes.number,
