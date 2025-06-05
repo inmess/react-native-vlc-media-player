@@ -32,12 +32,13 @@ const resolveAppGradleString = (options) => {
 
 const withGradleTasks = (config, options) => {
     return withAppBuildGradle(config, (config) => {
+        const len = config.modResults.contents.split("\n").length;
         const newCode = generateCode.mergeContents({
             tag: "withVlcMediaPlayer",
             src: config.modResults.contents,
             newSrc: resolveAppGradleString(options),
-            anchor: /applyNativeModulesAppBuildGradle\(project\)/i,
-            offset: 2,
+            anchor: "",
+            offset: len - 1,
             comment: "//",
         });
 
