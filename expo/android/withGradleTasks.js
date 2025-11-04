@@ -37,8 +37,8 @@ const withGradleTasks = (config, options) => {
             tag: "withVlcMediaPlayer",
             src: config.modResults.contents,
             newSrc: resolveAppGradleString(options),
-            anchor: "",
-            offset: len - 1,
+            anchor: /apply plugin: "com.facebook.react"/i,
+            offset: 1,
             comment: "//",
         });
 
